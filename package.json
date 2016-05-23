@@ -1,0 +1,50 @@
+{
+  "name": "cubitt-query-builder",
+  "version": "0.1.0",
+  "description": "Query builder for the Cubitt backend.",
+  "main": "./dist/cubitt-query-builder.js",
+  "typings": "./dist/cubitt-query-builder.d.ts",
+  "scripts": {
+    "lint": "tslint -c ./src/tslint.json --force -e ./src/{typings,test}/** ./src/**/*.ts",
+    "build": "cd ./src/ && typings install && tsc",
+    "test": "cd dist && mocha --require source-map-support/register",
+    "test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --include-all-sources --report lcovonly -- ./dist/test/ -R spec && remap-istanbul -i ./coverage/coverage.json -o ./coverage/coverage.json && istanbul report lcov",
+    "dev": "npm install && npm run lint && npm run build",
+    "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
+    "typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/",
+	 "postbuild": "rm -rf ./../platform/src/query-builder/* && cp -rf ./* ./../platform/src/query-builder/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:uu-cubitt/query-builder.git"
+  },
+  "keywords": [
+    "cubitt",
+    "cubitt-template"
+  ],
+  "contributors": [
+    "Thomas Ipskamp <thomas.ipskamp@gmail.com>",
+    "Sander Klock <sander.klock@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uu-cubitt/query-builder/issues"
+  },
+  "homepage": "https://uu-cubitt.github.io/query-builder",
+  "devDependencies": {
+    "typescript": "^1.8.9",
+    "typings": "^0.7.12",
+    "tslint": "^3.7.3",
+    "source-map-support": "^0.4.0",
+    "mocha": "^2.4.5",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "remap-istanbul": "^0.5.1",
+    "codeclimate-test-reporter": "^0.3.1",
+    "typedoc": "^0.3.12"
+  },
+  "dependencies": {
+    "cubitt-graph-cqrs": "^0.9.0",
+	 "cubitt-events": "^1.0.0"
+  }
+}
