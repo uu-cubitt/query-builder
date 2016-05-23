@@ -11,8 +11,7 @@
     "test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --include-all-sources --report lcovonly -- ./dist/test/ -R spec && remap-istanbul -i ./coverage/coverage.json -o ./coverage/coverage.json && istanbul report lcov",
     "dev": "npm install && npm run lint && npm run build",
     "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
-    "typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/",
-	 "postbuild": "rm -rf ./../platform/src/query-builder/* && cp -rf ./* ./../platform/src/query-builder/"
+    "typedoc": "rm -rf ./src/typings/ && typedoc --out ./doc/ --module commonjs --exclude **/test/**/*.ts --readme ./readme.md --target ES5 --mode file ./src/"
   },
   "repository": {
     "type": "git",
